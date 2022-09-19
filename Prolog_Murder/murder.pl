@@ -38,7 +38,7 @@ owns_probably(X, Object) :- owns(X, Object).
 
 /* Suspect all those who own a weapon with which susan could possibly have been killed. */
 
-suspect(X) :- killed_with( susan, weapon), operates_identically(Object, weapon), owns_probably( X, Object).
+suspect(X) :- killed_with( susan, Weapon), operates_identically(Object, Weapon), owns_probably( X, Object).
     
 /*Suspect some that have had affair with susan. */
                
@@ -46,7 +46,7 @@ suspect(X) :- motive( jealousy), person(X,_,m,_), had_affair( susan,X).
 
 /* Suspect females who have had an affair with a man susan knew.*/
 
-suspect(X) :- motive( jealousy), person( X,_,k,_), had_affair(X,Man), had_affair(susan,Man).
+suspect(X) :- motive( jealousy), person( X,_,f,_), had_affair(X,Man), had_affair(susan,Man).
 
 /* Suspect pickpockets whose motive could be money.*/
 
